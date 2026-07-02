@@ -1,6 +1,6 @@
 # .github/metadata.yaml
 # Triaged 2026-04-29 — anomaly-fix pass after wave-4 PR-branch triage didn't apply.
-description: "Type-safe wrappers for Linux-specific kernel mechanisms."
+description: "Type-safe wrappers for epoll and io_uring Linux kernel mechanisms in Swift."
 topics:
   - foundations
   - linux
