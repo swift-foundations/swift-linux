@@ -9,8 +9,8 @@
 //
 // ===----------------------------------------------------------------------===//
 
-import Testing
 import Linux_Kernel_Thread
+import Testing
 
 extension Linux.Thread {
     @Suite

@@ -22,5 +22,5 @@
 // Linux-specific syscalls (`getrandom(2)`, `sched_setaffinity(2)`,
 // `fdatasync(2)`, `io_uring_*`) with no BSD analogue.
 #if os(Linux) || os(FreeBSD) || os(OpenBSD) || os(Android)
-@_exported public import Linux_Loader_Standard
+    @_exported public import Linux_Loader_Standard
 #endif

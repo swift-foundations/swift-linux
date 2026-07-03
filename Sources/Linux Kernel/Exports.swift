@@ -1,15 +1,15 @@
-@_exported public import Linux_Kernel_File
-@_exported public import Linux_Kernel_Pipe
-@_exported public import Linux_Kernel_Socket
-@_exported public import Linux_Kernel_Memory
 @_exported public import Linux_Kernel_Descriptor
-@_exported public import Linux_Kernel_Futex
-@_exported public import Linux_Kernel_System
 @_exported public import Linux_Kernel_Event
+@_exported public import Linux_Kernel_File
+@_exported public import Linux_Kernel_Futex
 @_exported public import Linux_Kernel_IO
 @_exported public import Linux_Kernel_IO_Uring
-@_exported public import Linux_Kernel_Thread
+@_exported public import Linux_Kernel_Memory
+@_exported public import Linux_Kernel_Pipe
 @_exported public import Linux_Kernel_Random
+@_exported public import Linux_Kernel_Socket
+@_exported public import Linux_Kernel_System
+@_exported public import Linux_Kernel_Thread
 // Wave 3.5-Final-Atomic (2026-05-02): consolidate to umbrella POSIX_Kernel import
 // (covers POSIX root namespace + all POSIX.Kernel.X sub-namespaces post-flip).
 @_exported public import POSIX_Kernel
@@ -49,8 +49,8 @@ public typealias Linux = Linux_Kernel_System_Standard.Linux
 // not exist and the typealias would fail to resolve.
 #if os(Linux)
 
-public import ISO_9945_Core
-extension POSIX.Kernel.IO {
-    public typealias Uring = ISO_9945.Kernel.IO.Uring
-}
+    public import ISO_9945_Core
+    extension POSIX.Kernel.IO {
+        public typealias Uring = ISO_9945.Kernel.IO.Uring
+    }
 #endif

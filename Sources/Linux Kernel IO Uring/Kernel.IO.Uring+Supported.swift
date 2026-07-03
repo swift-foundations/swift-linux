@@ -11,8 +11,8 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
-public import ISO_9945_Kernel_Environment
+    public import ISO_9945_Core
+    public import ISO_9945_Kernel_Environment
     import POSIX_Kernel
 
     // MARK: - Runtime Detection

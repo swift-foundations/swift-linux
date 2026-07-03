@@ -9,8 +9,8 @@
 //
 // ===----------------------------------------------------------------------===//
 
-import Testing
 import Linux_Kernel_Random
+import Testing
 
 extension Random {
     @Suite
@@ -52,7 +52,7 @@ extension Random.Test.Unit {
         set.insert(.entropyNotReady)
         set.insert(.systemError(1))
         set.insert(.systemError(2))
-        set.insert(.entropyNotReady) // duplicate
+        set.insert(.entropyNotReady)  // duplicate
         #expect(set.count == 3)
     }
 
@@ -83,11 +83,11 @@ extension Random.Test.EdgeCase {
 
 #if os(Linux)
 
-extension Random.Test.Unit {
-    @Test func `Linux Random typealias resolves to Random`() {
-        #expect(Linux.Random.self == Random.self)
+    extension Random.Test.Unit {
+        @Test func `Linux Random typealias resolves to Random`() {
+            #expect(Linux.Random.self == Random.self)
+        }
     }
-}
 
 #endif
 
@@ -95,51 +95,51 @@ extension Random.Test.Unit {
 
 #if os(Linux)
 
-extension Random.Test.Unit {
-    @Test func `fill with non-empty buffer succeeds`() throws {
-        var bytes = [UInt8](repeating: 0, count: 32)
-        try bytes.withUnsafeMutableBytes { buffer in
-            try Random.fill(buffer)
+    extension Random.Test.Unit {
+        @Test func `fill with non-empty buffer succeeds`() throws {
+            var bytes = [UInt8](repeating: 0, count: 32)
+            try bytes.withUnsafeMutableBytes { buffer in
+                try Random.fill(buffer)
+            }
+            // With 32 random bytes, probability of all zeros is 2^-256
+            let allZero = bytes.allSatisfy { $0 == 0 }
+            #expect(!allZero)
         }
-        // With 32 random bytes, probability of all zeros is 2^-256
-        let allZero = bytes.allSatisfy { $0 == 0 }
-        #expect(!allZero)
-    }
 
-    @Test func `fill with empty buffer returns immediately`() throws {
-        var bytes = [UInt8]()
-        try bytes.withUnsafeMutableBytes { buffer in
-            try Random.fill(buffer)
+        @Test func `fill with empty buffer returns immediately`() throws {
+            var bytes = [UInt8]()
+            try bytes.withUnsafeMutableBytes { buffer in
+                try Random.fill(buffer)
+            }
         }
-    }
 
-    @Test func `fill produces different output on successive calls`() throws {
-        var a = [UInt8](repeating: 0, count: 32)
-        var b = [UInt8](repeating: 0, count: 32)
-        try a.withUnsafeMutableBytes { buffer in
-            try Random.fill(buffer)
+        @Test func `fill produces different output on successive calls`() throws {
+            var a = [UInt8](repeating: 0, count: 32)
+            var b = [UInt8](repeating: 0, count: 32)
+            try a.withUnsafeMutableBytes { buffer in
+                try Random.fill(buffer)
+            }
+            try b.withUnsafeMutableBytes { buffer in
+                try Random.fill(buffer)
+            }
+            #expect(a != b)
         }
-        try b.withUnsafeMutableBytes { buffer in
-            try Random.fill(buffer)
-        }
-        #expect(a != b)
-    }
 
-    @Test func `fill single byte succeeds`() throws {
-        var bytes = [UInt8](repeating: 0, count: 1)
-        try bytes.withUnsafeMutableBytes { buffer in
-            try Random.fill(buffer)
+        @Test func `fill single byte succeeds`() throws {
+            var bytes = [UInt8](repeating: 0, count: 1)
+            try bytes.withUnsafeMutableBytes { buffer in
+                try Random.fill(buffer)
+            }
         }
-    }
 
-    @Test func `fill large buffer succeeds`() throws {
-        var bytes = [UInt8](repeating: 0, count: 4096)
-        try bytes.withUnsafeMutableBytes { buffer in
-            try Random.fill(buffer)
+        @Test func `fill large buffer succeeds`() throws {
+            var bytes = [UInt8](repeating: 0, count: 4096)
+            try bytes.withUnsafeMutableBytes { buffer in
+                try Random.fill(buffer)
+            }
+            let allZero = bytes.allSatisfy { $0 == 0 }
+            #expect(!allZero)
         }
-        let allZero = bytes.allSatisfy { $0 == 0 }
-        #expect(!allZero)
     }
-}
 
 #endif
