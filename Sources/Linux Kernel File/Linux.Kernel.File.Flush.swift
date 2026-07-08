@@ -45,7 +45,7 @@
         @inlinable
         public static func data(_ descriptor: borrowing ISO_9945.Kernel.Descriptor) throws(Self.Error) {
             while true {
-                do {
+                do throws(Self.Error) {
                     try Self.fdatasync(descriptor)
                     return
                 } catch  where error.code.isInterrupted {

@@ -46,7 +46,7 @@
             if disabled == true { return false }
 
             var params = Params()
-            do {
+            do throws(Self.Error) {
                 let fd = try setup(entries: .one, params: &params)
                 close(fd)
                 return true
