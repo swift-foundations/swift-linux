@@ -19,14 +19,14 @@ import Testing
 
     extension Kernel.IO.Uring {
         @Suite
-        struct SupportedTest {
+        struct Test {
             @Suite struct Unit {}
         }
     }
 
     // MARK: - Unit Tests
 
-    extension Kernel.IO.Uring.SupportedTest.Unit {
+    extension Kernel.IO.Uring.Test.Unit {
         @Test func `isSupported returns a Bool`() {
             let result: Bool = Kernel.IO.Uring.isSupported
             // We cannot assert the value since it depends on the kernel,
