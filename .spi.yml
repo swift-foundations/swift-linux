@@ -1,0 +1,20 @@
+version: 1
+builder:
+  configs:
+  - documentation_targets:
+    - Linux Kernel File
+    - Linux Kernel Pipe
+    - Linux Kernel Socket
+    - Linux Kernel Memory
+    - Linux Kernel Descriptor
+    - Linux Kernel Futex
+    - Linux Kernel System
+    - Linux Kernel Event
+    - Linux Kernel IO
+    - Linux Kernel IO Uring
+    - Linux Kernel Thread
+    - Linux Kernel Random
+    - Linux Kernel
+    - Linux Loader
+    - Linux Memory
+    - Linux System
