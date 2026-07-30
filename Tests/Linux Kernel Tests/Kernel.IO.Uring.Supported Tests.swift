@@ -9,6 +9,7 @@
 //
 // ===----------------------------------------------------------------------===//
 
+import Linux_Kernel
 import Linux_Kernel_IO_Uring
 import Testing
 

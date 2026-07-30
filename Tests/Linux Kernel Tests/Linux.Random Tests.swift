@@ -16,7 +16,7 @@ extension Random {
     @Suite
     struct Test {
         @Suite struct Unit {}
-        @Suite struct `Edge Case` {}
+        @Suite struct EdgeCase {}
     }
 }
 

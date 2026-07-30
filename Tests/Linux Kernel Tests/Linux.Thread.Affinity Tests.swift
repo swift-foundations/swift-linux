@@ -9,6 +9,8 @@
 //
 // ===----------------------------------------------------------------------===//
 
+import ISO_9945_Kernel_Thread
+import Linux_Kernel
 import Linux_Kernel_Thread
 import Testing
 
@@ -17,7 +19,7 @@ import Testing
         @Suite
         struct Test {
             @Suite struct Unit {}
-            @Suite struct `Edge Case` {}
+            @Suite struct EdgeCase {}
         }
     }
 
