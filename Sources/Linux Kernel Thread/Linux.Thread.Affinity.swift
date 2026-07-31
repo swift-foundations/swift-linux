@@ -27,9 +27,11 @@
         ///
         /// ## Implementation
         /// - `.any`: No-op, returns immediately
-        /// - `.cores(set)`: Delegates to L2 ``ISO_9945/Kernel/Thread/Affinity/setMask(tid:cores:)``
+        /// - `.cores(set)`: Delegates to the re-anchored
+        ///   ``Linux/Kernel/Thread/Affinity/setMask(tid:cores:)`` (swift-linux-standard),
+        ///   the post-hoist home of this mechanism (swift-iso/swift-iso-9945#64)
         /// - `.numaNode(id)`: Resolves node to CPUs via `System.Topology.NUMA.discover`,
-        ///   then delegates to L2
+        ///   then delegates to the same re-anchored mechanism
         ///
         /// ## Errors
         /// - `.platform(code)`: sched_setaffinity failed (POSIX errno)
@@ -44,7 +46,14 @@
                 return
 
             case .cores(let cores):
-                try ISO_9945.Kernel.Thread.Affinity.setMask(cores: cores)
+                do {
+                    try Linux.Kernel.Thread.Affinity.setMask(cores: cores)
+                } catch {
+                    switch error {
+                    case .platform(let code):
+                        throw .platform(code)
+                    }
+                }
 
             case .numaNode(let nodeID):
                 let numaState = System.Topology.NUMA.discover()
@@ -53,7 +62,14 @@
                 else {
                     throw .invalidNode(nodeID)
                 }
-                try ISO_9945.Kernel.Thread.Affinity.setMask(cores: node.cpus)
+                do {
+                    try Linux.Kernel.Thread.Affinity.setMask(cores: node.cpus)
+                } catch {
+                    switch error {
+                    case .platform(let code):
+                        throw .platform(code)
+                    }
+                }
             }
         }
     }
