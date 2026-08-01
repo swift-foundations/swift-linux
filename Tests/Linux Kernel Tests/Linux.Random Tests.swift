@@ -16,7 +16,7 @@ extension Random {
     @Suite
     struct Test {
         @Suite struct Unit {}
-        @Suite struct EdgeCase {}
+        @Suite struct `Edge Case` {}
     }
 }
 
@@ -65,7 +65,7 @@ extension Random.Test.Unit {
 
 // MARK: - Edge Cases
 
-extension Random.Test.EdgeCase {
+extension Random.Test.`Edge Case` {
     @Test func `systemError with different codes are distinct`() {
         let a = Random.Error.systemError(1)
         let b = Random.Error.systemError(2)
