@@ -43,7 +43,9 @@
         /// - Parameter descriptor: The file descriptor.
         /// - Throws: ``Kernel/File/Flush/Error`` on failure (excluding EINTR).
         @inlinable
-        public static func data(_ descriptor: borrowing ISO_9945.Kernel.Descriptor) throws(Self.Error) {
+        public static func data(
+            _ descriptor: borrowing ISO_9945.Kernel.Descriptor
+        ) throws(Self.Error) {
             while true {
                 do throws(Self.Error) {
                     try Self.fdatasync(descriptor)
