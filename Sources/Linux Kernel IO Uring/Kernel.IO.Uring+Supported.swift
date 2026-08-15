@@ -40,7 +40,8 @@
 
         /// Cached support check.
         private static let _isSupported: Bool = {
-            let disabled = unsafe ISO_9945.Kernel.Environment.withValueBytes("IO_URING_DISABLED") { span in
+            let disabled = unsafe ISO_9945.Kernel.Environment.withValueBytes("IO_URING_DISABLED") {
+                span in
                 span.count == 1 && span[0] == UInt8(ascii: "1")
             }
             if disabled == true { return false }
