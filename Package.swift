@@ -1,15 +1,15 @@
-// swift-tools-version: 6.3.3
+// swift-tools-version: 6.4
 
 import PackageDescription
 
 let package = Package(
     name: "swift-linux",
     platforms: [
-        .macOS("27"),
-        .iOS("27"),
-        .tvOS("27"),
-        .watchOS("27"),
-        .visionOS("27"),
+        .macOS(.v27),
+        .iOS(.v27),
+        .tvOS(.v27),
+        .watchOS(.v27),
+        .visionOS(.v27),
     ],
     products: [
         // MARK: - Kernel Domain
@@ -34,10 +34,22 @@ let package = Package(
         .library(name: "Linux Test Support", targets: ["Linux Test Support"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/swift-linux-foundation/swift-linux-standard.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-system-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-random-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-error-primitives.git", branch: "main"),
+        .package(
+            url: "https://github.com/swift-linux-foundation/swift-linux-standard.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-system-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-random-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-error-primitives.git",
+            branch: "main"
+        ),
         .package(url: "https://github.com/swift-iso/swift-iso-9945.git", branch: "main"),
         .package(url: "https://github.com/swift-foundations/swift-posix.git", branch: "main"),
     ],
@@ -55,49 +67,49 @@ let package = Package(
         .target(
             name: "Linux Kernel Pipe",
             dependencies: [
-                .product(name: "Linux Kernel Pipe Standard", package: "swift-linux-standard"),
+                .product(name: "Linux Kernel Pipe Standard", package: "swift-linux-standard")
             ]
         ),
         .target(
             name: "Linux Kernel Socket",
             dependencies: [
-                .product(name: "Linux Kernel Socket Standard", package: "swift-linux-standard"),
+                .product(name: "Linux Kernel Socket Standard", package: "swift-linux-standard")
             ]
         ),
         .target(
             name: "Linux Kernel Memory",
             dependencies: [
-                .product(name: "Linux Kernel Memory Standard", package: "swift-linux-standard"),
+                .product(name: "Linux Kernel Memory Standard", package: "swift-linux-standard")
             ]
         ),
         .target(
             name: "Linux Kernel Descriptor",
             dependencies: [
-                .product(name: "Linux Kernel Descriptor Standard", package: "swift-linux-standard"),
+                .product(name: "Linux Kernel Descriptor Standard", package: "swift-linux-standard")
             ]
         ),
         .target(
             name: "Linux Kernel Futex",
             dependencies: [
-                .product(name: "Linux Kernel Futex Standard", package: "swift-linux-standard"),
+                .product(name: "Linux Kernel Futex Standard", package: "swift-linux-standard")
             ]
         ),
         .target(
             name: "Linux Kernel System",
             dependencies: [
-                .product(name: "Linux Kernel System Standard", package: "swift-linux-standard"),
+                .product(name: "Linux Kernel System Standard", package: "swift-linux-standard")
             ]
         ),
         .target(
             name: "Linux Kernel Event",
             dependencies: [
-                .product(name: "Linux Kernel Event Standard", package: "swift-linux-standard"),
+                .product(name: "Linux Kernel Event Standard", package: "swift-linux-standard")
             ]
         ),
         .target(
             name: "Linux Kernel IO",
             dependencies: [
-                .product(name: "Linux Kernel IO Standard", package: "swift-linux-standard"),
+                .product(name: "Linux Kernel IO Standard", package: "swift-linux-standard")
             ]
         ),
         .target(
@@ -158,7 +170,7 @@ let package = Package(
         .target(
             name: "Linux Loader",
             dependencies: [
-                .product(name: "Linux Loader Standard", package: "swift-linux-standard"),
+                .product(name: "Linux Loader Standard", package: "swift-linux-standard")
             ]
         ),
 
@@ -167,7 +179,7 @@ let package = Package(
         .target(
             name: "Linux Memory",
             dependencies: [
-                .product(name: "Linux Memory Standard", package: "swift-linux-standard"),
+                .product(name: "Linux Memory Standard", package: "swift-linux-standard")
             ]
         ),
 
