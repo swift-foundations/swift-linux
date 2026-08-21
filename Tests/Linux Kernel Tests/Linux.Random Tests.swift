@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-linux open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-linux project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 import Linux_Kernel_Random
 import Testing
 
@@ -19,8 +8,6 @@ extension Random {
         @Suite struct `Edge Case` {}
     }
 }
-
-// MARK: - Random.Error Tests (available on all platforms)
 
 extension Random.Test.Unit {
     @Test func `entropyNotReady error exists`() {
@@ -52,7 +39,7 @@ extension Random.Test.Unit {
         set.insert(.entropyNotReady)
         set.insert(.systemError(1))
         set.insert(.systemError(2))
-        set.insert(.entropyNotReady)  // duplicate
+        set.insert(.entropyNotReady)
         #expect(set.count == 3)
     }
 
@@ -62,8 +49,6 @@ extension Random.Test.Unit {
         #expect(a != b)
     }
 }
-
-// MARK: - Edge Cases
 
 extension Random.Test.`Edge Case` {
     @Test func `systemError with different codes are distinct`() {
@@ -79,8 +64,6 @@ extension Random.Test.`Edge Case` {
     }
 }
 
-// MARK: - Linux.Random typealias test
-
 #if os(Linux)
 
     extension Random.Test.Unit {
@@ -91,8 +74,6 @@ extension Random.Test.`Edge Case` {
 
 #endif
 
-// MARK: - Linux-only: Random.fill tests
-
 #if os(Linux)
 
     extension Random.Test.Unit {
@@ -101,7 +82,7 @@ extension Random.Test.`Edge Case` {
             try bytes.withUnsafeMutableBytes { buffer in
                 try Random.fill(buffer)
             }
-            // With 32 random bytes, probability of all zeros is 2^-256
+
             let allZero = bytes.allSatisfy { $0 == 0 }
             #expect(!allZero)
         }

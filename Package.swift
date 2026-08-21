@@ -12,7 +12,7 @@ let package = Package(
         .visionOS(.v27),
     ],
     products: [
-        // MARK: - Kernel Domain
+
         .library(name: "Linux Kernel File", targets: ["Linux Kernel File"]),
         .library(name: "Linux Kernel Pipe", targets: ["Linux Kernel Pipe"]),
         .library(name: "Linux Kernel Socket", targets: ["Linux Kernel Socket"]),
@@ -25,9 +25,9 @@ let package = Package(
         .library(name: "Linux Kernel IO Uring", targets: ["Linux Kernel IO Uring"]),
         .library(name: "Linux Kernel Thread", targets: ["Linux Kernel Thread"]),
         .library(name: "Linux Kernel Random", targets: ["Linux Kernel Random"]),
-        // MARK: - Umbrella
+
         .library(name: "Linux Kernel", targets: ["Linux Kernel"]),
-        // MARK: - Other
+
         .library(name: "Linux Loader", targets: ["Linux Loader"]),
         .library(name: "Linux Memory", targets: ["Linux Memory"]),
         .library(name: "Linux System", targets: ["Linux System"]),
@@ -54,8 +54,6 @@ let package = Package(
         .package(url: "https://github.com/swift-foundations/swift-posix.git", branch: "main"),
     ],
     targets: [
-
-        // MARK: - Kernel Domain (re-export L2 + policy)
 
         .target(
             name: "Linux Kernel File",
@@ -121,8 +119,6 @@ let package = Package(
             ]
         ),
 
-        // MARK: - L3-only (no L2 counterpart)
-
         .target(
             name: "Linux Kernel Thread",
             dependencies: [
@@ -140,8 +136,6 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Umbrella
-
         .target(
             name: "Linux Kernel",
             dependencies: [
@@ -157,15 +151,13 @@ let package = Package(
                 "Linux Kernel IO Uring",
                 "Linux Kernel Thread",
                 "Linux Kernel Random",
-                // Wave 3.5-Final-Atomic (2026-05-02): umbrella POSIX Kernel for Kernel = POSIX.Kernel typealias
+
                 .product(name: "POSIX Kernel", package: "swift-posix"),
                 .product(name: "ISO 9945 Kernel", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Core", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Kernel Thread", package: "swift-iso-9945"),
             ]
         ),
-
-        // MARK: - Loader
 
         .target(
             name: "Linux Loader",
@@ -174,16 +166,12 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Memory
-
         .target(
             name: "Linux Memory",
             dependencies: [
                 .product(name: "Linux Memory Standard", package: "swift-linux-standard")
             ]
         ),
-
-        // MARK: - System
 
         .target(
             name: "Linux System",
@@ -192,8 +180,6 @@ let package = Package(
                 .product(name: "System Primitives", package: "swift-system-primitives"),
             ]
         ),
-
-        // MARK: - Test Support
 
         .target(
             name: "Linux Test Support",
@@ -204,8 +190,6 @@ let package = Package(
             ],
             path: "Tests/Support"
         ),
-
-        // MARK: - Tests
 
         .testTarget(
             name: "Linux Kernel Tests",
