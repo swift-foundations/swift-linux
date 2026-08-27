@@ -39,19 +39,19 @@ let package = Package(
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-system-primitives.git",
+            url: "https://github.com/swift-molecules/swift-system.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-random-primitives.git",
+            url: "https://github.com/swift-molecules/swift-random.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-error-primitives.git",
+            url: "https://github.com/swift-molecules/swift-error.git",
             branch: "main"
         ),
         .package(url: "https://github.com/swift-iso/swift-iso-9945.git", branch: "main"),
-        .package(url: "https://github.com/swift-foundations/swift-posix.git", branch: "main"),
+        .package(url: "https://github.com/swift-compositions/swift-posix.git", branch: "main"),
     ],
     targets: [
 
@@ -124,15 +124,15 @@ let package = Package(
             dependencies: [
                 .product(name: "Linux Kernel System Standard", package: "swift-linux-standard"),
                 .product(name: "ISO 9945 Kernel Thread", package: "swift-iso-9945"),
-                .product(name: "System Primitives", package: "swift-system-primitives"),
-                .product(name: "Error Primitives", package: "swift-error-primitives"),
+                .product(name: "System", package: "swift-system"),
+                .product(name: "Error", package: "swift-error"),
             ]
         ),
         .target(
             name: "Linux Kernel Random",
             dependencies: [
                 .product(name: "Linux Kernel System Standard", package: "swift-linux-standard"),
-                .product(name: "Random Primitives", package: "swift-random-primitives"),
+                .product(name: "Random", package: "swift-random"),
             ]
         ),
 
@@ -177,7 +177,7 @@ let package = Package(
             name: "Linux System",
             dependencies: [
                 .product(name: "Linux Kernel System Standard", package: "swift-linux-standard"),
-                .product(name: "System Primitives", package: "swift-system-primitives"),
+                .product(name: "System", package: "swift-system"),
             ]
         ),
 

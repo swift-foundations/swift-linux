@@ -1,7 +1,7 @@
 # Linux
 
 ![Development Status](https://img.shields.io/badge/status-active--development-blue.svg)
-[![CI](https://github.com/swift-foundations/swift-linux/actions/workflows/ci.yml/badge.svg)](https://github.com/swift-foundations/swift-linux/actions/workflows/ci.yml)
+[![CI](https://github.com/swift-compositions/swift-linux/actions/workflows/ci.yml/badge.svg)](https://github.com/swift-compositions/swift-linux/actions/workflows/ci.yml)
 
 Type-safe wrappers for Linux-specific kernel mechanisms. Provides epoll event notification and io_uring async I/O with typed throws and full Sendable compliance.
 
@@ -24,7 +24,7 @@ Type-safe wrappers for Linux-specific kernel mechanisms. Provides epoll event no
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/swift-foundations/swift-linux.git", from: "0.1.0")
+    .package(url: "https://github.com/swift-compositions/swift-linux.git", from: "0.1.0")
 ]
 ```
 
@@ -106,7 +106,7 @@ This package provides Linux-specific kernel mechanisms. For cross-platform kerne
 ### Dependencies
 
 - [swift-kernel-primitives](https://github.com/coenttb/swift-kernel-primitives): Cross-platform kernel syscall wrappers
-- [swift-posix](https://github.com/swift-foundations/swift-posix): POSIX kernel bindings
+- [swift-posix](https://github.com/swift-compositions/swift-posix): POSIX kernel bindings
 - [swift-standards](https://github.com/swift-standards/swift-standards): Binary data types and standards
 
 ### Used By

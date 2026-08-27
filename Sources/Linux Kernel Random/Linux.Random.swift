@@ -2,7 +2,7 @@
 
     extension Linux {
 
-        public typealias Random = Random_Primitives.Random
+        public typealias Random = Random.Random
     }
 
     extension Random {
